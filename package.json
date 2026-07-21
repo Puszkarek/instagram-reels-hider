@@ -22,9 +22,9 @@
     "extension"
   ],
   "author": {
-    "name": "puskarek"
+    "name": "Puszkarek"
   },
-  "homepage": "https://github.com/puskarek/instagram-reels-hider",
+  "homepage": "https://github.com/Puszkarek/instagram-reels-hider",
   "license": "MIT",
   "dependencies": {
     "preact": "^10.29.2"

@@ -1,0 +1,158 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+   font-size: 14px;
+}
+
+.popup {
+   width: 380px;
+   min-height: 400px;
+   display: flex;
+   flex-direction: column;
+   transition: background-color 0.2s ease;
+
+   &.light {
+      background-color: #ffffff;
+      color: #262626;
+   }
+
+   &.dark {
+      background-color: #121212;
+      color: #ffffff;
+   }
+}
+
+.popup-header {
+   padding: 20px;
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   border-bottom: 1px solid transparent;
+
+   .light & {
+      border-bottom-color: #dbdbdb;
+   }
+
+   .dark & {
+      border-bottom-color: #363636;
+   }
+
+   .logo {
+      flex-shrink: 0;
+   }
+
+   h1 {
+      font-size: 18px;
+   font-weight: 600;
+   }
+}
+
+.popup-content {
+   flex: 1;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+.feature-card {
+   display: flex;
+   align-items: flex-start;
+   gap: 12px;
+   padding: 12px;
+   border-radius: 12px;
+   transition: background-color 0.2s ease;
+
+   .light & {
+      background-color: #fafafa;
+   }
+
+   .dark & {
+      background-color: #1e1e1e;
+   }
+
+   .feature-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .light & {
+         background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+         color: white;
+      }
+
+      .dark & {
+         background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+         color: white;
+      }
+   }
+
+   .feature-text {
+      flex: 1;
+
+      h3 {
+         font-size: 14px;
+         font-weight: 600;
+         margin-bottom: 4px;
+      }
+
+      p {
+         font-size: 12px;
+         opacity: 0.7;
+         line-height: 1.4;
+      }
+   }
+}
+
+.popup-footer {
+   padding: 16px 20px;
+   border-top: 1px solid transparent;
+
+   .light & {
+      border-top-color: #dbdbdb;
+   }
+
+   .dark & {
+      border-top-color: #363636;
+   }
+
+   .github-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+
+      .light & {
+         color: #0095f6;
+      }
+
+   .dark & {
+      color: #a8d7ff;
+   }
+
+   &:hover {
+      .light & {
+         background-color: #f0f0f0;
+      }
+
+      .dark & {
+         background-color: #2a2a2a;
+      }
+   }
+}
+}
