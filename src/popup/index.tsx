@@ -17,8 +17,14 @@ function App() {
    }, []);
 
    return (
-      <div className={`popup ${isDark ? 'dark' : 'light'}`}>
-         <header className="popup-header">
+      <div className={`theme-provider ${isDark ? 'dark' : 'light'}`}>
+         <div className="animated-bg">
+            <div className="blob blob-1"></div>
+            <div className="blob blob-2"></div>
+            <div className="blob blob-3"></div>
+         </div>
+         <div className="popup-glass">
+            <header className="popup-header">
             <div className="logo">
                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#gradient)" />
@@ -87,6 +93,7 @@ function App() {
                <span>GitHub</span>
             </a>
          </footer>
+         </div>
       </div>
    );
 }

@@ -7,23 +7,107 @@
 body {
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
    font-size: 14px;
-}
-
-.popup {
    width: 380px;
    min-height: 400px;
+   overflow: hidden;
+}
+
+.theme-provider {
+   width: 380px;
+   min-height: 400px;
+   position: relative;
+   overflow: hidden;
+   padding: 16px;
    display: flex;
    flex-direction: column;
-   transition: background-color 0.2s ease;
-
+   
    &.light {
-      background-color: #ffffff;
+      background-color: #f0f2f5;
       color: #262626;
    }
-
+   
    &.dark {
       background-color: #121212;
       color: #ffffff;
+   }
+}
+
+.animated-bg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 0;
+   overflow: hidden;
+   
+   .blob {
+      position: absolute;
+      filter: blur(40px);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 10s infinite ease-in-out alternate;
+   }
+
+   .blob-1 {
+      top: -20%;
+      left: -20%;
+      width: 200px;
+      height: 200px;
+      background: #833AB4;
+      animation-delay: 0s;
+   }
+
+   .blob-2 {
+      bottom: -10%;
+      right: -10%;
+      width: 250px;
+      height: 250px;
+      background: #FD1D1D;
+      animation-delay: -2s;
+   }
+
+   .blob-3 {
+      top: 40%;
+      left: 30%;
+      width: 150px;
+      height: 150px;
+      background: #F77737;
+      animation-delay: -4s;
+   }
+}
+
+@keyframes float {
+   0% {
+      transform: translate(0, 0) scale(1);
+   }
+   100% {
+      transform: translate(20px, 20px) scale(1.1);
+   }
+}
+
+.popup-glass {
+   position: relative;
+   z-index: 1;
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   border-radius: 20px;
+   
+   /* Glassmorphism magic */
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+   
+   .light & {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+   }
+
+   .dark & {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
    }
 }
 
@@ -33,13 +117,15 @@ body {
    align-items: center;
    gap: 12px;
    border-bottom: 1px solid transparent;
+   position: relative;
+   z-index: 1;
 
    .light & {
-      border-bottom-color: #dbdbdb;
+      border-bottom-color: rgba(255, 255, 255, 0.4);
    }
 
    .dark & {
-      border-bottom-color: #363636;
+      border-bottom-color: rgba(255, 255, 255, 0.1);
    }
 
    .logo {
@@ -58,42 +144,55 @@ body {
    display: flex;
    flex-direction: column;
    gap: 12px;
+   position: relative;
+   z-index: 1;
 }
 
 .feature-card {
    display: flex;
-   align-items: flex-start;
+   align-items: center;
    gap: 12px;
    padding: 12px;
-   border-radius: 12px;
-   transition: background-color 0.2s ease;
+   border-radius: 16px;
+   transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
 
    .light & {
-      background-color: #fafafa;
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 16px rgba(31, 38, 135, 0.05);
    }
 
    .dark & {
-      background-color: #1e1e1e;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+   }
+
+   &:hover {
+      .light & {
+         background: rgba(255, 255, 255, 0.5);
+         box-shadow: 0 8px 24px rgba(31, 38, 135, 0.1);
+      }
+
+      .dark & {
+         background: rgba(255, 255, 255, 0.1);
+         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
    }
 
    .feature-icon {
       flex-shrink: 0;
       width: 36px;
       height: 36px;
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      .light & {
-         background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
-         color: white;
-      }
-
-      .dark & {
-         background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
-         color: white;
-      }
+      background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+      color: white;
+      box-shadow: 0 4px 8px rgba(131, 58, 180, 0.3);
    }
 
    .feature-text {
@@ -116,13 +215,15 @@ body {
 .popup-footer {
    padding: 16px 20px;
    border-top: 1px solid transparent;
+   position: relative;
+   z-index: 1;
 
    .light & {
-      border-top-color: #dbdbdb;
+      border-top-color: rgba(255, 255, 255, 0.4);
    }
 
    .dark & {
-      border-top-color: #363636;
+      border-top-color: rgba(255, 255, 255, 0.1);
    }
 
    .github-link {
@@ -134,24 +235,30 @@ body {
       font-size: 13px;
       font-weight: 500;
       padding: 8px 12px;
-      border-radius: 8px;
-      transition: background-color 0.2s ease;
+      border-radius: 12px;
+      transition: all 0.3s ease;
 
       .light & {
          color: #0095f6;
-      }
+         background: rgba(0, 149, 246, 0.1);
+   }
 
    .dark & {
       color: #a8d7ff;
+      background: rgba(168, 215, 255, 0.1);
    }
 
    &:hover {
+      transform: scale(1.02);
+      
       .light & {
-         background-color: #f0f0f0;
+         background: rgba(0, 149, 246, 0.2);
+         box-shadow: 0 4px 8px rgba(0, 149, 246, 0.2);
       }
 
       .dark & {
-         background-color: #2a2a2a;
+         background: rgba(168, 215, 255, 0.2);
+         box-shadow: 0 4px 8px rgba(168, 215, 255, 0.2);
       }
    }
 }
