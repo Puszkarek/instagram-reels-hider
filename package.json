@@ -1,0 +1,46 @@
+{
+  "name": "instagram-reels-hider",
+  "version": "1.0.0",
+  "description": "Hide Instagram reels from your feed and profile",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build:chrome": "npx tsc --noEmit && node esbuild.config.mjs chrome",
+    "build:firefox": "npx tsc --noEmit && node esbuild.config.mjs firefox",
+    "build:firefox:prod": "npx tsc --noEmit && node esbuild.config.prod.mjs firefox",
+    "dev:firefox": "npx web-ext run --source-dir ./dist/firefox --firefox=/usr/bin/zen-browser --firefox-profile=\"/home/asmodeus/.config/zen/rr3orab3.Default (release)\"",
+    "package:firefox": "npx web-ext build --source-dir ./dist/firefox --artifacts-dir ./artifacts",
+    "android": "node ./node_modules/web-ext/bin/web-ext.js run -t firefox-android --android-device=5e843fe4 --firefox-apk org.mozilla.fenix --source-dir ./dist/firefox",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx biome lint --fix"
+  },
+  "keywords": [
+    "Instagram",
+    "reels",
+    "hider",
+    "browser",
+    "extension"
+  ],
+  "author": {
+    "name": "puskarek"
+  },
+  "homepage": "https://github.com/puskarek/instagram-reels-hider",
+  "license": "MIT",
+  "dependencies": {
+    "preact": "^10.29.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/firefox-webext-browser": "^143.0.0",
+    "chrome-types": "^0.1.429",
+    "esbuild": "^0.28.0",
+    "esbuild-sass-plugin": "^3.7.0",
+    "sass": "^1.100.0",
+    "sass-embedded": "^1.100.0",
+    "typescript": "^6.0.3",
+    "web-ext": "^10.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
