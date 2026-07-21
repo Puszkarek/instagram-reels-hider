@@ -26,6 +26,9 @@
     "storage"
   ],
   "browser_specific_settings": {
+    "gecko": {
+      "id": "instagram-reels-hider@puszkarek.github.io"
+    },
     "gecko_android": {
       "strict_min_version": "120.0a1"
     }
